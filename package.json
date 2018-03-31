@@ -1,0 +1,29 @@
+{
+  "name": "mapbox_static_helper",
+  "version": "1.0.0",
+  "description": "Provides urls and pixel positions for loading MapBox's static (square) tiles and create a bigger image",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JuanIrache/mapbox_static_helper.git"
+  },
+  "keywords": [
+    "mapbox",
+    "static",
+    "static",
+    "api",
+    "url",
+    "gps",
+    "maps",
+    "satellite"
+  ],
+  "author": "Juan Irache Duesca <juan@tailornadwayne.com> (http://tailorandwayne.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JuanIrache/mapbox_static_helper/issues"
+  },
+  "homepage": "https://github.com/JuanIrache/mapbox_static_helper#readme"
+}
