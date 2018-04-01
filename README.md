@@ -7,7 +7,7 @@ Provides urls and pixel positions for loading MapBox's static (square) tiles and
 
 Using npm:
 ```shell
-$ npm install --save mapbox_static_helper
+$ npm install mapbox_static_helper
 ```
 
 ## Usage
@@ -18,7 +18,7 @@ let map = require('mapbox_static_helper');
 //set values
 //Available styles can be found here: https://www.mapbox.com/api-documentation/#styles
 //for example satellite-v9
-//location_data must be an instance of this other module: https://github.com/JuanIrache/latlon_to_xy 
+//location_data must be an instance of this other module: https://github.com/JuanIrache/latlon_to_xy
 map.setup(mapBoxToken,screen_width,screen_height,zoom,map_style,location_data,tile_size);
 let image_urls = mp.getUrlsAndXY();
 //getUrlsAndXY() returns an array of objects, with 3 values each: url (string), x and y (center position of image on screen)
