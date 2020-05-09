@@ -69,6 +69,9 @@ function mapBoxStaticHelper() {
     setStyle: function (st) {
       style = st;
     },
+    getZoom: function () {
+      return z;
+    },
     getStyle: function () {
       return style;
     },
