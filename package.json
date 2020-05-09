@@ -1,6 +1,6 @@
 {
   "name": "mapbox_static_helper",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Provides urls and pixel positions for loading MapBox's static (square) tiles and create a bigger image",
   "main": "index.js",
   "scripts": {
