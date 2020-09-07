@@ -1,5 +1,5 @@
 //gets a mapbox token, screen dimensions, map style and location data and returns an array of urls and screen cordinates to fill the screen with images
-//Refernce conversions module
+
 function mapBoxStaticHelper() {
   let token;
   let w;
@@ -9,8 +9,11 @@ function mapBoxStaticHelper() {
   let z;
   let tileSize;
   let conversions;
-  function refresh(tk, wi, he, zo, st, conv, ts) {
-    //mapbox token, width, height, zoom level, map style ("outdoors", "satellite"...), conversions instance and tile size
+  let attribution;
+  let double;
+  function refresh(tk, wi, he, zo, st, conv, ts, attr, db) {
+    //mapbox token, width, height, zoom level, map style ("outdoors", "satellite"...), conversions instance, tile size
+    // enable attribution and double resolution
     token = tk;
     conversions = conv;
     tileSize = ts || 1024;
@@ -22,6 +25,8 @@ function mapBoxStaticHelper() {
     };
     style = st;
     z = zo;
+    attribution = attr;
+    double = db;
     while (w / mapImgs.width > tileSize) mapImgs.width += 2;
     while (h / mapImgs.height > tileSize) mapImgs.height += 2;
   }
@@ -38,7 +43,9 @@ function mapBoxStaticHelper() {
             let x = tileSize * wPos;
             let lon = conversions.xToLon(0 + tileSize * wPos);
             let lat = conversions.yToLat(0 + tileSize * hPos);
-            let mapString = `https://api.mapbox.com/styles/v1/mapbox/${style}/static/${lon},${lat},${z}/${tileSize}x${tileSize}?access_token=${token}&logo=false&attribution=false`;
+            let mapString = `https://api.mapbox.com/styles/v1/mapbox/${style}/static/${lon},${lat},${z}/${tileSize}x${tileSize}${
+              double ? '@2x' : ''
+            }?access_token=${token}&logo=false&attribution=${!!attribution}`;
             result.push({
               url: mapString,
               x: x,
@@ -66,8 +73,28 @@ function mapBoxStaticHelper() {
     getLocation: function () {
       return conversions;
     },
-    setup: function (tk, wi, he, zo, st, conv, ts) {
-      refresh(tk, wi, he, zo, st, conv, ts);
+    setup: function ({
+      mapBoxToken,
+      screen_width,
+      screen_height,
+      zoom,
+      map_style,
+      location_data,
+      tile_size,
+      attribution,
+      double
+    }) {
+      refresh(
+        mapBoxToken,
+        screen_width,
+        screen_height,
+        zoom,
+        map_style,
+        location_data,
+        tile_size,
+        attribution,
+        double
+      );
     }
   };
 }
